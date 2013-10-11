@@ -1,6 +1,9 @@
 gsocketpool
 ===========
 
+.. image:: https://travis-ci.org/studio-ousia/gsocketpool.png?branch=master
+    :target: https://travis-ci.org/studio-ousia/gsocketpool
+
 A simple connection pool for gevent.
 
 .. code-block:: python
