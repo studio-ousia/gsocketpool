@@ -6,7 +6,7 @@ gsocketpool is a simple connection pool for gevent.
 Basic Usage
 -----------
 
-The following is an example to create a connection pool for communicating an echo server running on *localhost 2000*.
+The following is an example to create a connection pool that communicats an echo server running on *localhost 2000*.
 
 .. code-block:: python
 
@@ -21,20 +21,14 @@ The following is an example to create a connection pool for communicating an ech
     ...     print conn.recv()
     hello
 
-You can launch an echo server on localhost by running the following command on the console.
 
-.. code-block:: bash
+Implementing Protocol
+---------------------
 
-    ncat -l 2000 --keep-open --exec "/bin/cat"
-
-
-Implementing Protocols
-----------------------
-
-Arbitrary protocols can be used by extending :class:`Connection <gsocketpool.connection.Connection>` class. You have to override at least three functions such as :func:`open() <gsocketpool.connection.Connection.open>`, :func:`close() <gsocketpool.connection.Connection.close>` and :func:`is_connected() <gsocketpool.connection.Connection.is_connected>`.
+Arbitrary protocols can be easily implemented by extending :class:`Connection <gsocketpool.connection.Connection>` class. You have to override at least three functions such as :func:`open() <gsocketpool.connection.Connection.open>`, :func:`close() <gsocketpool.connection.Connection.close>` and :func:`is_connected() <gsocketpool.connection.Connection.is_connected>`.
 
 
-:class:`TcpConnection <gsocketpool.connection.TcpConnection>` used in the above example is also a subclass of :class:`Connection <gsocketpool.connection.Connection>`.
+:class:`TcpConnection <gsocketpool.connection.TcpConnection>` used in the above example is also implemented as a subclass of :class:`Connection <gsocketpool.connection.Connection>`.
 
 
 .. code-block:: python
@@ -87,4 +81,3 @@ Arbitrary protocols can be used by extending :class:`Connection <gsocketpool.con
             return self._sock.recv(size)
 
 For detailed usage, please refer to the :doc:`API reference <api>`.
-
