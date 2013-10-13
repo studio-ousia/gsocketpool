@@ -1,6 +1,9 @@
 gsocketpool
 ===========
 
+.. image:: https://badge.fury.io/py/gsocketpool.png
+    :target: http://badge.fury.io/py/gsocketpool
+
 .. image:: https://travis-ci.org/studio-ousia/gsocketpool.png?branch=master
     :target: https://travis-ci.org/studio-ousia/gsocketpool
 
