@@ -65,7 +65,6 @@ class TestPool(object):
         conn1 = pool.acquire()
         eq_(mock_conn1, conn1)
         eq_(1, pool.size)
-        eq_(1, mock_factory.call_count)
         ok_(conn1 not in pool._pool)
         ok_(conn1 in pool._using)
 
@@ -73,7 +72,6 @@ class TestPool(object):
         conn2 = pool.acquire()
         eq_(mock_conn2, conn2)
         eq_(2, pool.size)
-        eq_(2, mock_factory.call_count)
         ok_(conn2 in pool._using)
 
         # release conn1
@@ -103,7 +101,8 @@ class TestPool(object):
         conn1 = pool.acquire()  # make the pool reach the max connection
 
         gevent.spawn_later(0, pool.release, conn1)
-        pool.acquire(retry=1)
+        conn = pool.acquire(retry=1)
+        eq_(conn, conn1)
 
     @raises(PoolExhaustedError)
     def test_acquire_disable_retry(self):
@@ -139,8 +138,11 @@ class TestPool(object):
         pool.release(conn1)
 
         ok_(conn1 in pool._pool)
+
         pool.drop(conn1)
+
         ok_(conn1 not in pool._pool)
+        conn1.close.assert_called_once_with()
 
     @raises(ConnectionNotFoundError)
     def test_drop_using_connection(self):
@@ -172,5 +174,7 @@ class TestPool(object):
         pool.drop_expired()
 
         ok_(mock_conn1 not in pool._pool)
+        mock_conn1.close.assert_called_once_with()
         ok_(mock_conn2 in pool._pool)
         ok_(mock_conn3 not in pool._pool)
+        mock_conn1.close.assert_called_once_with()
