@@ -4,8 +4,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='gsocketpool',
-    version='0.0.1',
-    description='A socket pool implementation for gevent',
+    version='0.1',
+    description='A simple connection pool for gevent',
     author='Studio Ousia',
     author_email='admin@ousia.jp',
     url='http://github.com/studio-ousia/gsocketpool',
@@ -13,7 +13,7 @@ setup(
     license=open('LICENSE').read(),
     include_package_data=True,
     classifiers=(
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',
