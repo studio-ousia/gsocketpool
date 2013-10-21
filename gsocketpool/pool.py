@@ -30,9 +30,9 @@ class Pool(object):
     Usage:
         Communicating echo server running on localhost 2000:
 
-        >>> from gsocketpool.pool import Pool
-        >>> from gsocketpool.connection import TcpConnection
         >>> 
+        >>> from gsocketpool import Pool
+        >>> from gsocketpool import TcpConnection
         >>> options = dict(host='localhost', port=2000)
         >>> pool = Pool(TcpConnection, options)
         >>> 

@@ -10,8 +10,8 @@ The following is an example to create a connection pool that communicates an ech
 
 .. code-block:: python
 
-    >>> from gsocketpool.pool import Pool
-    >>> from gsocketpool.connection import TcpConnection
+    >>> from gsocketpool import Pool
+    >>> from gsocketpool import TcpConnection
     >>> 
     >>> options = dict(host='localhost', port=2000)
     >>> pool = Pool(TcpConnection, options)
