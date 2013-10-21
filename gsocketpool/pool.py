@@ -6,13 +6,7 @@ import contextlib
 import gevent
 from gevent import Greenlet
 
-
-class PoolExhaustedError(Exception):
-    pass
-
-
-class ConnectionNotFoundError(Exception):
-    pass
+from exceptions import ConnectionNotFoundError, PoolExhaustedError
 
 
 class ConnectionReaper(Greenlet):
@@ -110,7 +104,7 @@ class Pool(object):
 
         :param int retry: (optional) The maximum number of times to retry.
         :returns: :class:`Connection <gsocketpool.connection.Connection>` instance.
-        :raises:  :class:`PoolExhaustedError <gsocketpool.pool.PoolExhaustedError>`
+        :raises:  :class:`PoolExhaustedError <gsocketpool.exceptions.PoolExhaustedError>`
         """
 
         if len(self._pool):
@@ -138,7 +132,7 @@ class Pool(object):
         """Releases the connection.
 
         :param Connection conn: :class:`Connection <gsocketpool.connection.Connection>` instance.
-        :raises: :class:`ConnectionNotFoundError <gsocketpool.pool.ConnectionNotFoundError>`
+        :raises: :class:`ConnectionNotFoundError <gsocketpool.exceptions.ConnectionNotFoundError>`
         """
 
         if conn in self._using:
@@ -152,7 +146,7 @@ class Pool(object):
         """Removes the connection from the pool.
 
         :param Connection conn: :class:`Connection <gsocketpool.connection.Connection>` instance.
-        :raises: :class:`ConnectionNotFoundError <gsocketpool.pool.ConnectionNotFoundError>`
+        :raises: :class:`ConnectionNotFoundError <gsocketpool.exceptions.ConnectionNotFoundError>`
         """
 
         if conn in self._pool:

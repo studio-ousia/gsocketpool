@@ -9,3 +9,9 @@ API Reference
 
 .. autoclass:: gsocketpool.pool.Pool
     :members:
+
+.. autoclass:: gsocketpool.exceptions.PoolExhaustedError
+    :members:
+
+.. autoclass:: gsocketpool.exceptions.ConnectionNotFoundError
+    :members:
