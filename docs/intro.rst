@@ -6,7 +6,7 @@ gsocketpool is a simple connection pool for gevent.
 Basic Usage
 -----------
 
-The following is an example to create a connection pool that communicats an echo server running on *localhost 2000*.
+The following is an example to create a connection pool that communicates an echo server running on *localhost 2000*.
 
 .. code-block:: python
 
