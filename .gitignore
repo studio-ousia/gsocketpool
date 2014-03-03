@@ -4,6 +4,7 @@
 .coverage
 .ropeproject
 .venv
+.tox
 *.sublime-*
 build
 dist
