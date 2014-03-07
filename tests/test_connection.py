@@ -47,7 +47,7 @@ class TestTcpConnection(object):
     def test_open(self, mock_socket):
         conn = TcpConnection('localhost', 2000)
         conn.open()
-        conn.socket.connect.assert_called_once_with(('localhost', 2000))
+        conn.get().connect.assert_called_once_with(('localhost', 2000))
 
         ok_(conn.is_connected())
 
@@ -56,7 +56,7 @@ class TestTcpConnection(object):
         conn = TcpConnection('localhost', 2000, timeout=10)
         conn.open()
 
-        conn.socket.settimeout.assert_called_once_with(10)
+        conn.get().settimeout.assert_called_once_with(10)
 
     @patch('gevent.socket.socket')
     def test_close(self, mock_socket):
@@ -64,7 +64,7 @@ class TestTcpConnection(object):
         conn.open()
         conn.close()
 
-        conn.socket.close.assert_called_once_with()
+        conn.get().close.assert_called_once_with()
         ok_(not conn.is_connected())
 
     @patch('gevent.socket.socket')
@@ -82,7 +82,7 @@ class TestTcpConnection(object):
         conn.open()
 
         conn.send('dummy')
-        conn.socket.send.assert_called_once_with('dummy')
+        conn.get().send.assert_called_once_with('dummy')
 
     @patch('gevent.socket.socket')
     def test_recv(self, mock_socket):
@@ -90,4 +90,4 @@ class TestTcpConnection(object):
         conn.open()
 
         conn.recv(20)
-        conn.socket.recv.assert_called_once_with(20)
+        conn.get().recv.assert_called_once_with(20)

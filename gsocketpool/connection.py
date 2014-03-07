@@ -21,6 +21,10 @@ class Connection(object):
 
         raise NotImplementedError()
 
+    def get(self):
+        """Returns real connection."""
+        raise NotImplementedError()
+
     def is_connected(self):
         """Returns whether the connection has been established.
 
@@ -64,8 +68,7 @@ class TcpConnection(Connection):
         self._connected = False
         self._created = None
 
-    @property
-    def socket(self):
+    def get(self):
         return self._sock
 
     def open(self):

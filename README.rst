@@ -48,8 +48,7 @@ Arbitrary protocols can be easily implemented by extending *Connection* class. Y
             self._connected = False
             self._created = None
 
-        @property
-        def socket(self):
+        def get(self):
             return self._sock
 
         def open(self):
