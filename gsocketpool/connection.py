@@ -22,7 +22,7 @@ class Connection(object):
         raise NotImplementedError()
 
     def get(self):
-        """Returns real connection."""
+        """Returns the raw connection."""
         raise NotImplementedError()
 
     def is_connected(self):
