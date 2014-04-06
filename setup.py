@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='gsocketpool',
-    version='0.1.2',
+    version='0.1.3',
     description='A simple connection pool for gevent',
     author='Studio Ousia',
     author_email='admin@ousia.jp',
