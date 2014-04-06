@@ -68,6 +68,10 @@ class TcpConnection(Connection):
         self._connected = False
         self._created = None
 
+    @property
+    def socket(self):
+        return self._sock
+
     def get(self):
         return self._sock
 
