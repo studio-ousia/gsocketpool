@@ -144,6 +144,20 @@ class TestPool(object):
         ok_(conn1 not in pool._pool)
         conn1.close.assert_called_once_with()
 
+    def test_drop_closed_connection(self):
+        pool = Pool(Mock())
+        conn1 = pool.acquire()
+        conn1.is_connected = Mock()
+        conn1.is_connected.return_value = False
+        pool.release(conn1)
+
+        ok_(conn1 in pool._pool)
+
+        pool.drop(conn1)
+
+        ok_(conn1 not in pool._pool)
+        ok_(not conn1.close.called)
+
     @raises(ConnectionNotFoundError)
     def test_drop_using_connection(self):
         pool = Pool(Mock())
