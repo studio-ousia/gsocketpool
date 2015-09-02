@@ -151,7 +151,8 @@ class Pool(object):
 
         if conn in self._pool:
             self._pool.remove(conn)
-            conn.close()
+            if conn.is_connected():
+                conn.close()
 
         else:
             raise ConnectionNotFoundError()
