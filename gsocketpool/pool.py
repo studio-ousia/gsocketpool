@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 import collections
 import logging
 import contextlib
 import gevent
 from gevent import Greenlet
 
-from exceptions import ConnectionNotFoundError, PoolExhaustedError
+from gsocketpool.exceptions import ConnectionNotFoundError, PoolExhaustedError
 
 
 class ConnectionReaper(Greenlet):
