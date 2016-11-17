@@ -8,7 +8,7 @@ setup(
     description='A simple connection pool for gevent',
     author='Studio Ousia',
     author_email='ikuya@ousia.jp',
-    url='http://github.com/studio-ousia/gsocketpool',
+    url='https://github.com/studio-ousia/gsocketpool',
     packages=find_packages(),
     license=open('LICENSE').read(),
     include_package_data=True,
