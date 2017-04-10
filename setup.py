@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='gsocketpool',
@@ -9,7 +9,7 @@ setup(
     author='Studio Ousia',
     author_email='ikuya@ousia.jp',
     url='https://github.com/studio-ousia/gsocketpool',
-    packages=find_packages(),
+    packages=['gsocketpool'],
     license=open('LICENSE').read(),
     include_package_data=True,
     classifiers=(
